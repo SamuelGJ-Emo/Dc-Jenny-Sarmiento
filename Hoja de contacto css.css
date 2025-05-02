@@ -1,0 +1,145 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #a9dff1;
+  color: #333;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #ffffffdd;
+  backdrop-filter: blur(8px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  height: 50px;
+}
+
+.menu ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #005b82;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.menu a:hover {
+  color: #003d5c;
+}
+
+/* Espacio tras el header */
+.foto-inicio {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.foto-inicio img {
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Texto principal */
+.texto-bloque {
+  text-align: center;
+  padding: 2rem;
+}
+
+.texto-bloque h1 {
+  font-size: 2.2rem;
+  color: #005b82;
+}
+
+.texto-bloque h3 {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  color: #333;
+}
+
+/* FORMULARIO */
+.form-section {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 3rem;
+}
+
+.campo {
+  margin-bottom: 1.5rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: #e6f7fb;
+  transition: border 0.3s;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #0088b5;
+  background-color: #d0eff7;
+}
+
+/* FOOTER */
+footer {
+  background-color: #005b82;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 0 0 20px 20px;
+}
+
+footer p {
+  margin: 0.5rem 0;
+}
+
+.socials {
+  margin: 1rem 0;
+}
+
+.socials a {
+  margin: 0 0.5rem;
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.socials a:hover {
+  color: #a9dff1;
+}
+
+.terminos {
+  cursor: pointer;
+  text-decoration: underline;
+}
