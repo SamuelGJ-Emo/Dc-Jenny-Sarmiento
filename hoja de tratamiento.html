@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tratamientos - Dra. Jenny Sarmiento</title>
-  <link rel="stylesheet" href="hoja de tratamiento.css" />
+  <meta charset="UTF-8">
+  <title>Tratamientos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilos-unificados.css">
 </head>
 <body>
-  <!-- Encabezado -->
+  
+<header class="header">
+  <img src="logo.png" alt="Logo" class="logo">
+  <nav class="nav-menu">
+    <a href="Css 2.html">Inicio</a>
+    <a href="Hoja de tratamiento.html">Tratamientos</a>
+    <a href="Hoja de contacto.html">Contacto</a>
+  </nav>
+</header>
+
+  <main>
+    <!-- Encabezado -->
   <header>
-    <img class="logo" src="/api/placeholder/100/100" alt="Logo de la Dra. Jenny Sarmiento" />
-    <nav class="nav-menu">
-      <ul>
-        <li><a href="Css 2.html">Inicio</a></li>
-        <li><a href="#tratamiento">Tratamiento</a></li>
-        <li><a href="sobremi.html">Sobre mí</a></li>
-        <li><a href="Hoja de contacto.html">Contacto</a></li>
-      </ul>
-    </nav>
+    
   </header>
 
   <!-- Cabecera de tratamientos -->
@@ -31,7 +34,7 @@
     <!-- Armonización facial -->
     <div class="category">
       <div class="category-header">
-        <div class="category-icon">✨</div>
+        
         <h2 class="category-title">Armonización Facial</h2>
       </div>
       <div class="treatments-list">
@@ -120,7 +123,7 @@
     <!-- Microblanding y Micropigmentación -->
     <div class="category">
       <div class="category-header">
-        <div class="category-icon">🖌️</div>
+        
         <h2 class="category-title">Microblanding y Micropigmentación</h2>
       </div>
       <div class="treatments-list">
@@ -177,7 +180,7 @@
     <!-- Manejo de Alopecia -->
     <div class="category">
       <div class="category-header">
-        <div class="category-icon">💆</div>
+        
         <h2 class="category-title">Manejo de Alopecia</h2>
       </div>
       <div class="treatments-list">
@@ -242,34 +245,29 @@
   <!-- Semicírculo decorativo -->
   <div class="semicirculo"></div>
 
-  <!-- Footer -->
-  <footer>
-    <p>Dra. Jenny Sarmiento</p>
-    <div class="redes">
-      <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
-      <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-    </div>
-    <label for="terms-toggle" class="terminos">Términos exclusivos y políticas</label>
-  </footer>
+
+  
 
   <!-- Checkbox para controlar el modal sin JS -->
   <input type="checkbox" id="terms-toggle">
-  
-  <!-- Modal -->
-  <div class="modal">
-    <div class="modal-content">
-      <label for="terms-toggle" class="close-modal">&times;</label>
-      <h2>Términos y Políticas</h2>
-      <p>Todos los derechos reservados &copy; 2025 - Dra. Jenny Sarmiento</p>
-      <p>Esta página web es únicamente para fines informativos. La información proporcionada no sustituye la consulta médica profesional.</p>
-      <p>Para cualquier tratamiento, es necesario una evaluación personalizada en nuestro consultorio.</p>
-    </div>
-  </div>
+
+ 
 
   <!-- Botón volver arriba -->
   <a href="#tratamiento" class="back-to-top">
     <i class="fas fa-chevron-up"></i>
   </a>
+  </main>
+  
+<footer>
+  <p>&copy; 2025 Dra. Jenny Sarmiento. Todos los derechos reservados.</p>
+  <div class="socials">
+    <a href="#">🌐</a>
+    <a href="#">📷</a>
+    <a href="#">📘</a>
+  </div>
+</footer>
+
+  <button id="btnSubir" class="back-to-top">↑</button>
 </body>
 </html>
