@@ -1,100 +1,175 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contacto - Dra. Jenny Sarmiento</title>
-  <link rel="stylesheet" href="hoja_de_contacto.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    .form-container {
-      max-width: 600px;
-      margin: 4rem auto;
-      background: #ffffff;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .form-container h2 {
-      text-align: center;
-      color: #0077a6;
-      margin-bottom: 1.5rem;
-    }
-
-    form label {
-      display: block;
-      margin-top: 1rem;
-      font-weight: 600;
-    }
-
-    form input,
-    form textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin-top: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    form button {
-      margin-top: 1.5rem;
-      padding: 0.75rem 2rem;
-      background-color: #0077a6;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    form button:hover {
-      background-color: #005c84;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-
   <header>
-    <img class="logo" src="img/logo.png" alt="Logo de la Dra. Jenny Sarmiento" />
-    <nav class="nav-menu">
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="hoja de tratamiento.html">Tratamientos</a></li>
-        <li><a href="hoja de contacto.html">Contacto</a></li>
-      </ul>
-    </nav>
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <i class="fas fa-heartbeat"></i>
+        Dra. Jenny Sarmiento
+      </a>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="hoja de tratamiento.html">Tratamientos</a></li>
+          <li><a href="hoja de contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main style="margin-top: 100px;">
-    <section class="form-container">
-      <h2>Contáctanos</h2>
-      <form action="#" method="post">
-        <label for="nombre">Nombre completo</label>
-        <input type="text" id="nombre" name="nombre" required />
+  <main>
+    <section class="contact-hero">
+      <div class="contact-hero-content">
+        <h1>Contáctanos</h1>
+        <p>Estamos aquí para resolver todas tus dudas y ayudarte a agendar tu cita. Nuestro equipo profesional te brindará la atención personalizada que mereces.</p>
+      </div>
+    </section>
 
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" name="email" required />
+    <section class="contact-section">
+      <div class="contact-grid">
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <div class="form-header">
+            <h2>Envíanos un mensaje</h2>
+            <p>Completa el formulario y nos pondremos en contacto contigo</p>
+          </div>
+          <form action="#" method="post">
+            <div class="form-group">
+              <label for="nombre">Nombre completo *</label>
+              <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo">
+            </div>
+            <div class="form-group">
+              <label for="email">Correo electrónico *</label>
+              <input type="email" id="email" name="email" required placeholder="tu@email.com">
+            </div>
+            <div class="form-group">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="+57 300 123 4567">
+            </div>
+            <div class="form-group">
+              <label for="tratamiento">Tratamiento de interés</label>
+              <select id="tratamiento" name="tratamiento">
+                <option value="">Selecciona un tratamiento</option>
+                <option value="toxina-botulinica">Toxina Botulínica</option>
+                <option value="acido-hialuronico">Ácido Hialurónico</option>
+                <option value="plasma-rico-plaquetas">Plasma Rico en Plaquetas</option>
+                <option value="hidratacion-facial">Hidratación Facial Inyectable</option>
+                <option value="skin-care">Skin Care</option>
+                <option value="camuflaje-cicatrices">Camuflaje de Cicatrices</option>
+                <option value="areolas-realistas">Areolas Realistas</option>
+                <option value="cejas-labios">Cejas y Labios</option>
+                <option value="mesoterapia-capilar">Mesoterapia Capilar</option>
+                <option value="tratamiento-farmacologico">Tratamiento Farmacológico</option>
+                <option value="consulta-general">Consulta General</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="mensaje">Mensaje *</label>
+              <textarea id="mensaje" name="mensaje" required placeholder="Cuéntanos sobre tu consulta o tratamiento de interés..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-paper-plane"></i>
+              Enviar mensaje
+            </button>
+          </form>
+        </div>
 
-        <label for="mensaje">Mensaje</label>
-        <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <div class="info-card">
+            <div class="info-header">
+              <div class="info-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="info-title">Ubicación</div>
+            </div>
+            <div class="info-content">
+              <p>Calle 123 #45-67<br>
+              Bogotá, Colombia<br>
+              Centro Médico Especializado</p>
+            </div>
+          </div>
 
-        <button type="submit">Enviar mensaje</button>
-      </form>
+          <div class="info-card">
+            <div class="info-header">
+              <div class="info-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="info-title">Teléfono</div>
+            </div>
+            <div class="info-content">
+              <p><a href="tel:+573001234567">+57 300 123 4567</a><br>
+              <a href="tel:+573001234568">+57 300 123 4568</a></p>
+              <small style="color: var(--text-light);">Lunes a Viernes: 8:00 AM - 6:00 PM<br>
+              Sábados: 9:00 AM - 2:00 PM</small>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-header">
+              <div class="info-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="info-title">Email</div>
+            </div>
+            <div class="info-content">
+              <p><a href="mailto:info@drajennysarmiento.com">info@drajennysarmiento.com</a><br>
+              <a href="mailto:citas@drajennysarmiento.com">citas@drajennysarmiento.com</a></p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-header">
+              <div class="info-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="info-title">Horarios de Atención</div>
+            </div>
+            <div class="info-content">
+              <p><strong>Lunes - Viernes:</strong> 8:00 AM - 6:00 PM<br>
+              <strong>Sábados:</strong> 9:00 AM - 2:00 PM<br>
+              <strong>Domingos:</strong> Cerrado</p>
+              <small style="color: var(--accent-color); font-weight: 500;">*Citas de emergencia disponibles</small>
+            </div>
+          </div>
+
+          <div class="social-section">
+            <h3 class="social-title">Síguenos en redes sociales</h3>
+            <div class="social-links">
+              <a href="#" class="facebook" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="instagram" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="whatsapp" aria-label="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+              <a href="#" class="tiktok" aria-label="TikTok">
+                <i class="fab fa-tiktok"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Dra. Jenny Sarmiento</p>
-    <div class="redes">
-      <a href="#"><span class="fa-facebook"></span></a>
-      <a href="#"><span class="fa-instagram"></span></a>
-      <a href="#"><span class="fa-whatsapp"></span></a>
+    <div class="footer-content">
+      <p>&copy; 2025 Dra. Jenny Sarmiento - Todos los derechos reservados</p>
     </div>
   </footer>
 
+  <a href="#" class="back-to-top" aria-label="Volver arriba">
+    <i class="fas fa-chevron-up"></i>
+  </a>
 </body>
 </html>
-
