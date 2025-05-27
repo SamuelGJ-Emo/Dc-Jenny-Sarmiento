@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre Mí - Dra. Jenny Sarmiento</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #0077a6;
+      --secondary-color: #00a8d6;
+      --accent-color: #00a8d6;
+      --text-dark: #2c3e50;
+      --text-light: #7f8c8d;
+      --background-light: #f8fbff;
+      --white: #ffffff;
+      --gradient-main: linear-gradient(135deg, #0077a6 0%, #00a8d6 100%);
+      --gradient-accent: linear-gradient(135deg, #00a8d6 0%, #0077a6 100%);
+      --shadow-soft: 0 10px 30px rgba(0, 119, 166, 0.1);
+      --shadow-medium: 0 15px 40px rgba(0, 119, 166, 0.15);
+      --border-radius: 16px;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      overflow-x: hidden;
+      background: var(--background-light);
+      padding-top: 80px;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 119, 166, 0.1);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo i {
+      font-size: 2rem;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-menu ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: all 0.3s ease;
+    }
+
+    .nav-menu a:hover {
+      color: var(--primary-color);
+    }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-main);
+      transition: width 0.3s ease;
+    }
+
+    .nav-menu a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: var(--gradient-main);
+      padding: 6rem 2rem 4rem;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="90" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    /* Main Content */
+    .main-content {
+      max-width: 1200px;
+      margin: -2rem auto 0;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Profile Card */
+    .profile-card {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-medium);
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+
+    .profile-header {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 0;
+      min-height: 400px;
+    }
+
+    .profile-image {
+      background: var(--gradient-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 8rem;
+      position: relative;
+    }
+
+    .profile-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+    }
+
+    .profile-info {
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .profile-info h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .profile-info .title {
+      font-size: 1.2rem;
+      color: var(--secondary-color);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    .profile-info p {
+      color: var(--text-light);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .profile-badges {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      padding: 0.5rem 1rem;
+      background: var(--background-light);
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
+    }
+
+    /* Stats Section */
+    .stats-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-main);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .stat-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-main);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    /* About Details */
+    .about-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .detail-card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-soft);
+      transition: all 0.3s ease;
+    }
+
+    .detail-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .detail-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .detail-card h3 i {
+      width: 40px;
+      height: 40px;
+      background: var(--gradient-main);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .detail-list {
+      list-style: none;
+    }
+
+    .detail-list li {
+      padding: 0.8rem 0;
+      border-bottom: 1px solid rgba(0, 119, 166, 0.1);
+      color: var(--text-light);
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .detail-list li:last-child {
+      border-bottom: none;
+    }
+
+    .detail-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--secondary-color);
+      font-weight: bold;
+    }
+
+    /* Mission Vision */
+    .mission-vision {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .mission-card, .vision-card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mission-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+    }
+
+    .vision-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+    }
+
+    .mission-card h3, .vision-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .mission-card h3 {
+      color: var(--accent-color);
+    }
+
+    .vision-card h3 {
+      color: var(--primary-color);
+    }
+
+    .mission-card p, .vision-card p {
+      color: var(--text-light);
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    /* Contact CTA */
+    .contact-cta {
+      background: var(--gradient-main);
+      border-radius: var(--border-radius);
+      padding: 3rem;
+      text-align: center;
+      color: white;
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23dots)"/></svg>');
+    }
+
+    .contact-cta-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-cta h3 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .contact-cta p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: white;
+      color: var(--primary-color);
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--text-dark);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary-color);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 968px) {
+      .profile-header {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-image {
+        min-height: 200px;
+      }
+
+      .about-details,
+      .mission-vision {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .profile-info h1 {
+        font-size: 2rem;
+      }
+
+      .stats-section {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .main-content {
+        padding: 0 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .stats-section {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-info,
+      .detail-card,
+      .contact-cta {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <a href="#" class="logo">
+        <i class="fas fa-heartbeat"></i>
+        Dra. Jenny Sarmiento
+      </a>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#perfil">Mi Perfil</a></li>
+          <li><a href="#experiencia">Experiencia</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero-section" id="inicio">
+    <div class="hero-content fade-in">
+      <h1 class="hero-title">Conoce a la Dra. Jenny Sarmiento</h1>
+      <p class="hero-subtitle">Especialista en Medicina Estética dedicada a realzar tu belleza natural</p>
+    </div>
+  </section>
+
+  <main class="main-content">
+    <section class="profile-card fade-in" id="perfil">
+      <div class="profile-header">
+        <div class="profile-image">
+          <i class="fas fa-user-md"></i>
+        </div>
+        <div class="profile-info">
+          <h1>Dra. Jenny Sarmiento</h1>
+          <p class="title">Médica Especialista en Estética y Bienestar</p>
+          <p>Soy una profesional apasionada por la medicina estética con más de una década de experiencia transformando vidas a través de tratamientos personalizados que combinan ciencia, arte y bienestar.</p>
+          <p>Mi enfoque se centra en potenciar la belleza natural de cada paciente, siempre manteniendo los más altos estándares de calidad, seguridad y profesionalismo.</p>
+          <div class="profile-badges">
+            <span class="badge">Medicina Estética</span>
+            <span class="badge">Armonización Facial</span>
+            <span class="badge">Micropigmentación</span>
+            <span class="badge">Tricología</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-section" id="experiencia">
+      <div class="stat-card fade-in">
+        <div class="stat-icon">
+          <i class="fas fa-calendar-alt"></i>
+        </div>
+        <span class="stat-number">10+</span>
+        <p class="stat-label">Años de Experiencia en Medicina Estética</p>
+      </div>
+      <div class="stat-card fade-in">
+        <div class="stat-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <span class="stat-number">500+</span>
+        <p class="stat-label">Pacientes Satisfechas y Transformadas</p>
+      </div>
+      <div class="stat-card fade-in">
+        <div class="stat-icon">
+          <i class="fas fa-award"></i>
+        </div>
+        <span class="stat-number">4</span>
+        <p class="stat-label">Especialidades Médicas Certificadas</p>
+      </div>
+      <div class="stat-card fade-in">
+        <div class="stat-icon">
+          <i class="fas fa-heart"></i>
+        </div>
+        <span class="stat-number">100%</span>
+        <p class="stat-label">Dedicación y Compromiso</p>
+      </div>
+    </section>
+
+    <section class="about-details">
+      <div class="detail-card fade-in">
+        <h3>
+          <i class="fas fa-graduation-cap"></i>
+          Formación Académica
+        </h3>
+        <ul class="detail-list">
+          <li>Medicina General - Universidad Nacional de Colombia</li>
+          <li>Especialización en Medicina Estética - ISAPS</li>
+          <li>Certificación en Armonización Facial</li>
+          <li>Diplomado en Tricología y Manejo de Alopecia</li>
+          <li>Curso Avanzado en Micropigmentación</li>
+          <li>Actualización Continua en Técnicas Innovadoras</li>
+        </ul>
+      </div>
+      <div class="detail-card fade-in">
+        <h3>
+          <i class="fas fa-star"></i>
+          Especialidades
+        </h3>
+        <ul class="detail-list">
+          <li>Armonización Facial con Ácido Hialurónico</li>
+          <li>Microblading y Diseño de Cejas</li>
+          <li>Micropigmentación Labial y Facial</li>
+          <li>Tratamientos Avanzados para Alopecia</li>
+          <li>Medicina Preventiva y Anti-aging</li>
+          <li>Consultoría en Bienestar Integral</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mission-vision">
+      <div class="mission-card fade-in">
+        <h3>
+          <i class="fas fa-bullseye"></i>
+          Mi Misión
+        </h3>
+        <p>Ayudar a cada paciente a sentirse mejor consigo misma, potenciando su belleza natural a través de tratamientos personalizados que combinan técnicas médicas avanzadas con un enfoque integral del bienestar. Mi compromiso es brindar resultados naturales y duraderos que reflejen la personalidad única de cada persona.</p>
+      </div>
+      <div class="vision-card fade-in">
+        <h3>
+          <i class="fas fa-eye"></i>
+          Mi Visión
+        </h3>
+        <p>Ser reconocida como la especialista líder en medicina estética que transforma vidas a través de la innovación, la excelencia médica y el cuidado humanizado. Aspiro a crear un espacio donde cada paciente se sienta valorada, comprendida y acompañada en su proceso de transformación personal.</p>
+      </div>
+    </section>
+
+    <section class="contact-cta fade-in" id="contacto">
+      <div class="contact-cta-content">
+        <h3>¿Lista para tu Transformación?</h3>
+        <p>Agenda una consulta personalizada y descubre cómo puedo ayudarte a alcanzar tus objetivos estéticos de manera natural y segura.</p>
+        <a href="tel:+573001234567" class="cta-button">
+          <i class="fas fa-phone"></i> Agenda tu Consulta
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="mailto:contacto@drajennysarmiento.com">
+        <i class="fas fa-envelope"></i> Email
+      </a>
+      <a href="tel:+573001234567">
+        <i class="fas fa-phone"></i> Teléfono
+      </a>
+      <a href="#">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+      <a href="#">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+    </div>
+    <p>&copy; 2025 Dra. Jenny Sarmiento - Todos los derechos reservados</p>
+  </footer>
+
+  <script>
+    // Smooth scrolling para los enlaces
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Animaciones al hacer scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Aplicar animaciones a elementos
+    document.querySelectorAll('.fade-in').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'all 0.8s ease-out';
+      observer.observe(el);
+    });
+
+    // Header transparency on scroll
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.style.background = 'rgba(255, 255, 255, 0.98)';
+        header.style.boxShadow = '0 2px 20px rgba(0, 119, 166, 0.1)';
+      } else {
+        header.style.background = 'rgba(255, 255, 255, 0.95)';
+        header.style.boxShadow = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
+  .hero-overlay p {
+    font-size: 1rem;
+  }
+}
