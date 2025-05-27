@@ -4,106 +4,1005 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dra. Jenny Sarmiento - Estética y Salud</title>
-  <link rel="stylesheet" href="estilo.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #0077a6;
+      --secondary-color: #00a8d6;
+      --accent-color: #ff6b9d;
+      --text-dark: #2c3e50;
+      --text-light: #7f8c8d;
+      --background-light: #f8fbff;
+      --white: #ffffff;
+      --gradient-main: linear-gradient(135deg, #0077a6 0%, #00a8d6 100%);
+      --gradient-accent: linear-gradient(135deg, #00a8d6 0%, #0077a6 100%);
+      --shadow-soft: 0 10px 30px rgba(0, 119, 166, 0.1);
+      --shadow-medium: 0 15px 40px rgba(0, 119, 166, 0.15);
+      --border-radius: 16px;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 119, 166, 0.1);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo i {
+      font-size: 2rem;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-menu ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: all 0.3s ease;
+    }
+
+    .nav-menu a:hover {
+      color: var(--primary-color);
+    }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-main);
+      transition: width 0.3s ease;
+    }
+
+    .nav-menu a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      height: 100vh;
+      background: var(--gradient-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="90" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+    }
+
+    .hero-content {
+      text-align: center;
+      color: white;
+      max-width: 800px;
+      padding: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      font-weight: 300;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: var(--gradient-accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-soft);
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+
+    .hero-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    /* Floating Elements */
+    .floating-element {
+      position: absolute;
+      opacity: 0.1;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .floating-element:nth-child(1) {
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .floating-element:nth-child(2) {
+      top: 60%;
+      right: 15%;
+      animation-delay: 2s;
+    }
+
+    .floating-element:nth-child(3) {
+      bottom: 20%;
+      left: 20%;
+      animation-delay: 4s;
+    }
+
+    /* Services Section */
+    .services-section {
+      padding: 6rem 2rem;
+      background: var(--background-light);
+      position: relative;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 3rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-main);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--gradient-main);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2rem;
+      color: white;
+    }
+
+    .service-card h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-dark);
+    }
+
+    .service-card p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .service-btn {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background: transparent;
+      color: var(--primary-color);
+      text-decoration: none;
+      border: 2px solid var(--primary-color);
+      border-radius: 25px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .service-btn:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    /* About Section */
+    .about-section {
+      padding: 6rem 2rem;
+      background: white;
+      position: relative;
+    }
+
+    .about-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p {
+      color: var(--text-light);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--background-light);
+      border-radius: var(--border-radius);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      display: block;
+    }
+
+    .stat-label {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .about-image {
+      position: relative;
+    }
+
+    .about-image::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      right: 20px;
+      bottom: 20px;
+      background: var(--gradient-main);
+      border-radius: var(--border-radius);
+      z-index: -1;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-medium);
+    }
+
+    /* Testimonials Section */
+    .testimonials-section {
+      padding: 6rem 2rem;
+      background: var(--background-light);
+      position: relative;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      font-size: 4rem;
+      color: var(--primary-color);
+      font-family: serif;
+      opacity: 0.3;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+
+    .testimonial-rating {
+      display: flex;
+      gap: 0.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .star {
+      color: #ffd700;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 6rem 2rem;
+      background: white;
+      position: relative;
+    }
+
+    .contact-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .contact-info h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: var(--background-light);
+      border-radius: var(--border-radius);
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateX(10px);
+    }
+
+    .contact-item i {
+      width: 40px;
+      height: 40px;
+      background: var(--gradient-main);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .contact-form {
+      background: var(--background-light);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid transparent;
+      border-radius: var(--border-radius);
+      background: white;
+      font-family: inherit;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(0, 119, 166, 0.1);
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1rem;
+      background: var(--gradient-main);
+      color: white;
+      border: none;
+      border-radius: var(--border-radius);
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--text-dark);
+      color: white;
+      padding: 3rem 2rem 1rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-links a {
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-main);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    /* Back to Top */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-main);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      box-shadow: var(--shadow-soft);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    /* Modal */
+    .modal-toggle {
+      display: none;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .modal-toggle:checked + .modal {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+      transform: scale(0.8);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-toggle:checked + .modal .modal-content {
+      transform: scale(1);
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-light);
+      transition: color 0.3s ease;
+    }
+
+    .close-modal:hover {
+      color: var(--text-dark);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .about-content,
+      .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .service-card,
+      .testimonial-card {
+        padding: 1.5rem;
+      }
+
+      .header-content {
+        padding: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-
   <header>
-    <img class="logo" src="img/logo.png" alt="Logo de la Dra. Jenny Sarmiento" />
-    <nav class="nav-menu">
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="hoja de tratamiento.html">Tratamientos</a></li>
-        <li><a href="#sobre-mi">Sobre mí</a></li>
-        <li><a href="hoja_de_contacto.html">Contacto</a></li>
-      </ul>
-    </nav>
+    <div class="header-content">
+      <a href="#inicio" class="logo">
+        <i class="fas fa-heartbeat"></i>
+        Dra. Jenny Sarmiento
+      </a>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Tratamientos</a></li>
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
     <section class="hero-section" id="inicio">
-      <div class="hero-image">
-        <img src="img/hero.jpg" alt="Consultorio de la Dra. Jenny Sarmiento" />
-        <div class="hero-overlay">
-          
-          
+      <div class="floating-element">
+        <i class="fas fa-spa" style="font-size: 3rem; color: white;"></i>
+      </div>
+      <div class="floating-element">
+        <i class="fas fa-leaf" style="font-size: 2rem; color: white;"></i>
+      </div>
+      <div class="floating-element">
+        <i class="fas fa-heart" style="font-size: 2.5rem; color: white;"></i>
+      </div>
+      
+      <div class="hero-content">
+        <h1 class="hero-title">Dra. Jenny Sarmiento</h1>
+        <p class="hero-subtitle">Especialista en Medicina Estética y Bienestar<br>Realza tu belleza natural con tratamientos personalizados</p>
+        <a href="#contacto" class="hero-cta">
+          <i class="fas fa-calendar-alt"></i> Agenda tu Consulta
+        </a>
+      </div>
+    </section>
+
+    <section class="services-section" id="servicios">
+      <h2 class="section-title">Nuestros Tratamientos</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-magic"></i>
+          </div>
+          <h3>Armonización Facial</h3>
+          <p>Realza tu belleza natural equilibrando tus rasgos con precisión médica y técnicas avanzadas para resultados naturales y duraderos.</p>
+          <a href="#contacto" class="service-btn">Agendar Consulta</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-eye"></i>
+          </div>
+          <h3>Microblading</h3>
+          <p>Diseño pelo a pelo con acabado natural para resaltar tu mirada. Técnica de micropigmentación semipermanente para cejas perfectas.</p>
+          <a href="#contacto" class="service-btn">Agendar Consulta</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-palette"></i>
+          </div>
+          <h3>Micropigmentación</h3>
+          <p>Color y definición sutil y duradera, personalizada a tu estilo. Resultados naturales que realzan tu belleza sin esfuerzo diario.</p>
+          <a href="#contacto" class="service-btn">Agendar Consulta</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-seedling"></i>
+          </div>
+          <h3>Manejo de Alopecia</h3>
+          <p>Tratamientos efectivos para fortalecer y regenerar tu cabello con técnicas innovadoras y protocolos personalizados.</p>
+          <a href="#contacto" class="service-btn">Agendar Consulta</a>
         </div>
       </div>
     </section>
 
-    <section class="icon-block" id="tratamientos">
-      <div class="icon-card">
-        <h3>Armonización Facial</h3>
-        <p>Realza tu belleza natural equilibrando tus rasgos con precisión médica.</p>
-        <div class="more-info">Haz clic para agendar</div>
-      </div>
-      <div class="icon-card">
-        <h3>Microblading</h3>
-        <p>Diseño pelo a pelo con acabado natural para resaltar tu mirada.</p>
-        <div class="more-info">Haz clic para agendar</div>
-      </div>
-      <div class="icon-card">
-        <h3>Micropigmentación</h3>
-        <p>Color y definición sutil y duradera, personalizada a tu estilo.</p>
-        <div class="more-info">Haz clic para agendar</div>
-      </div>
-      <div class="icon-card">
-        <h3>Manejo de Alopecia</h3>
-        <p>Tratamientos efectivos para fortalecer y regenerar tu cabello.</p>
-        <div class="more-info">Haz clic para agendar</div>
-      </div>
-    </section>
-
-    <div class="curvas"><div></div><div></div><div></div></div>
-
-    <section id="sobre-mi" style="padding: 3rem 2rem; background: #f9fdff;">
-      <h2 style="text-align: center; color: #0077a6;">Sobre mí</h2>
-      <p style="max-width: 800px; margin: 2rem auto; text-align: center;">
-        Soy la Dra. Jenny Sarmiento, especialista en medicina estética con más de 10 años de experiencia en tratamientos personalizados que combinan ciencia, arte y bienestar. Mi misión es ayudarte a sentirte mejor contigo misma, potenciando tu belleza natural y cuidando de tu salud.
-      </p>
-    </section>
-
-    <section style="padding: 4rem 2rem; background-color: #f9fdff;">
-      <h2 style="text-align: center; color: #0077a6; margin-bottom: 2rem;">Testimonios</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
-        <div style="background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
-          <p style="font-style: italic;">"Excelente atención. La doctora Jenny tiene un trato muy humano y los resultados fueron maravillosos."</p>
-          <p style="font-weight: bold; margin-top: 1rem; color: #0077a6;">– Carolina M.</p>
+    <section class="about-section" id="sobre-mi">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>Sobre mí</h2>
+          <p>Soy la Dra. Jenny Sarmiento, especialista en medicina estética con más de 10 años de experiencia en tratamientos personalizados que combinan ciencia, arte y bienestar.</p>
+          <p>Mi misión es ayudarte a sentirte mejor contigo misma, potenciando tu belleza natural y cuidando de tu salud con los más altos estándares de calidad y profesionalismo.</p>
+          <div class="about-stats">
+            <div class="stat-item">
+              <span class="stat-number">10+</span>
+              <span class="stat-label">Años de Experiencia</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">500+</span>
+              <span class="stat-label">Pacientes Satisfechas</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">4</span>
+              <span class="stat-label">Especialidades</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Dedicación</span>
+            </div>
+          </div>
         </div>
-        <div style="background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
-          <p style="font-style: italic;">"El tratamiento de armonización facial superó mis expectativas. 100% recomendado."</p>
-          <p style="font-weight: bold; margin-top: 1rem; color: #0077a6;">– Laura G.</p>
-        </div>
-        <div style="background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
-          <p style="font-style: italic;">"Desde el primer contacto fue muy profesional. Me encantó el resultado del microblading."</p>
-          <p style="font-weight: bold; margin-top: 1rem; color: #0077a6;">– Andrea V.</p>
+        <div class="about-image">
+          <div style="width: 100%; height: 400px; background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #0077a6; font-size: 3rem;">
+            <i class="fas fa-user-md"></i>
+          </div>
         </div>
       </div>
     </section>
 
-    <div class="semicirculo"></div>
+    <section class="testimonials-section">
+      <h2 class="section-title">Lo que dicen nuestras pacientes</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="fas fa-star star"></i>
+            <i class="fas fa-star star"></i>
+            <i class="fas fa-star star"></i>
+            <i class="fas fa-star star"></i>
+            <i class="fas fa-star star"></i>
+          </div>
+          <p class="testimonial-text">Excelente atención. La doctora Jenny tiene un trato muy humano y los resultados fueron maravillosos. Me siento renovada y con mucha más confianza.</p>
+          <p class="testimonial-author">– Carolina M.</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="fas fa-star star"></i>
+            <i class="fas fa-star star"></i>
+            <i class="fas fa-star star"></i>
+            <i class="fas fa-star star"></i>
+            <i class="fas fa-star star"></i>
+          </div>
+          <p class="testimonial-text">El tratamiento de armonización facial superó mis expectativas. Los resultados son naturales y exactamente lo que buscaba. 100% recomendado.</p>
+          <p class="testimonial-author">– Laura G.</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="fas fa-star star"></i>
+            <i class="fas fa-star star"></i>
+            <i class="fas fa-star star"></i>
+            <i class="fas fa-star star"></i>
+            <i class="fas fa-star star"></i>
+          </div>
+          <p class="testimonial-text">Desde el primer contacto fue muy profesional. Me encantó el resultado del microblading, quedó perfecto y exactamente como lo imaginé.</p>
+          <p class="testimonial-author">– Andrea V.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contacto">
+      <h2 class="section-title">Contacto</h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <h3>Información de Contacto</h3>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <strong>Teléfono</strong><br>
+              +57 300 123 4567
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <strong>Email</strong><br>
+              contacto@drajennysarmiento.com
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <strong>Dirección</strong><br>
+              Calle 123 #45-67, Bogotá, Colombia
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-clock"></i>
+            <div>
+              <strong>Horarios</strong><br>
+              Lun - Vie: 9:00 AM - 6:00 PM<br>
+              Sáb: 9:00 AM - 2:00 PM
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3>Agenda tu Consulta</h3>
+          <form>
+            <div class="form-group">
+              <label for="nombre">Nombre completo</label>
+              <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" required>
+            </div>
+            <div class="form-group">
+              <label for="tratamiento">Tratamiento de interés</label>
+              <select id="tratamiento" name="tratamiento" style="width: 100%; padding: 1rem; border: 2px solid transparent; border-radius: 16px; background: white; font-family: inherit;">
+                <option value="">Selecciona un tratamiento</option>
+                <option value="armonizacion">Armonización Facial</option>
+                <option value="microblading">Microblading</option>
+                <option value="micropigmentacion">Micropigmentación</option>
+                <option value="alopecia">Manejo de Alopecia</option>
+                <option value="consulta">Consulta General</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="mensaje">Mensaje (opcional)</label>
+              <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos sobre tus objetivos y expectativas..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-paper-plane"></i> Enviar Mensaje
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Dra. Jenny Sarmiento - Todos los derechos reservados</p>
-    <div class="redes">
-      <a href="#"><span class="fa-facebook"></span></a>
-      <a href="#"><span class="fa-instagram"></span></a>
-      <a href="#"><span class="fa-whatsapp"></span></a>
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="#" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="#" aria-label="TikTok">
+          <i class="fab fa-tiktok"></i>
+        </a>
+      </div>
+      <p>&copy; 2025 Dra. Jenny Sarmiento - Todos los derechos reservados</p>
+      <label for="terms-toggle" style="color: #00a8d6; cursor: pointer; text-decoration: underline; margin-top: 1rem; display: inline-block;">
+        Términos y condiciones
+      </label>
     </div>
-    <label for="terms-toggle" class="terminos">Términos y condiciones</label>
   </footer>
 
-  <input type="checkbox" id="terms-toggle">
+  <input type="checkbox" id="terms-toggle" class="modal-toggle">
   <div class="modal">
     <div class="modal-content">
       <span class="close-modal" onclick="document.getElementById('terms-toggle').checked = false;">&times;</span>
-      <h2>Términos y Condiciones</h2>
-      <p>Contenido legal, condiciones de uso, políticas de privacidad, etc.</p>
+      <h2 style="color: var(--primary-color); margin-bottom: 1rem;">Términos y Condiciones</h2>
+      <div style="max-height: 300px; overflow-y: auto; color: var(--text-light); line-height: 1.6;">
+        <h4 style="color: var(--text-dark); margin: 1rem 0 0.5rem;">1. Servicios Médicos</h4>
+        <p>Los servicios ofrecidos por la Dra. Jenny Sarmiento son de carácter médico estético y requieren evaluación previa.</p>
+        
+        <h4 style="color: var(--text-dark); margin: 1rem 0 0.5rem;">2. Consulta Previa</h4>
+        <p>Todo tratamiento requiere una consulta previa para evaluar la idoneidad del paciente y explicar el procedimiento.</p>
+        
+        <h4 style="color: var(--text-dark); margin: 1rem 0 0.5rem;">3. Consentimiento Informado</h4>
+        <p>El paciente debe firmar un consentimiento informado antes de cualquier procedimiento.</p>
+        
+        <h4 style="color: var(--text-dark); margin: 1rem 0 0.5rem;">4. Privacidad</h4>
+        <p>Toda la información del paciente se maneja bajo estricta confidencialidad médica.</p>
+        
+        <h4 style="color: var(--text-dark); margin: 1rem 0 0.5rem;">5. Citas</h4>
+        <p>Las citas deben cancelarse con 24 horas de anticipación. Citas no canceladas pueden ser cobradas.</p>
+      </div>
     </div>
   </div>
 
-  <a href="#inicio" class="back-to-top"><span class="fa-chevron-up"></span></a>
+  <a href="#inicio" class="back-to-top" aria-label="Volver al inicio">
+    <i class="fas fa-chevron-up"></i>
+  </a>
 </body>
 </html>
