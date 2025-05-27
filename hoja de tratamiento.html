@@ -2,272 +2,1119 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Tratamientos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="hoja de tratamiento.css">
+  <title>Tratamientos - Dra. Jenny Sarmiento</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #0077a6;
+      --secondary-color: #00a8d6;
+      --accent-color: #ff6b9d;
+      --text-dark: #2c3e50;
+      --text-light: #7f8c8d;
+      --background-light: #f8fbff;
+      --white: #ffffff;
+      --gradient-main: linear-gradient(135deg, #0077a6 0%, #00a8d6 100%);
+      --gradient-accent: linear-gradient(135deg, #00a8d6 0%, #0077a6 100%);
+      --shadow-soft: 0 10px 30px rgba(0, 119, 166, 0.1);
+      --shadow-medium: 0 15px 40px rgba(0, 119, 166, 0.15);
+      --border-radius: 16px;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 119, 166, 0.1);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo i {
+      font-size: 2rem;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-menu ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: all 0.3s ease;
+    }
+
+    .nav-menu a:hover {
+      color: var(--primary-color);
+    }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-main);
+      transition: width 0.3s ease;
+    }
+
+    .nav-menu a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section for Treatments */
+    .treatments-hero {
+      background: var(--gradient-main);
+      padding: 8rem 2rem 4rem;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .treatments-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="90" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+    }
+
+    .treatments-hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .treatments-hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .treatments-hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      font-weight: 300;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    /* Category Section */
+    .category-section {
+      padding: 4rem 2rem;
+      background: var(--background-light);
+    }
+
+    .category-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .category {
+      margin-bottom: 4rem;
+      background: white;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      transition: all 0.3s ease;
+    }
+
+    .category:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .category-header {
+      background: var(--gradient-main);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .category-header::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 20px solid var(--secondary-color);
+    }
+
+    .category-title {
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .category-icon {
+      font-size: 2.5rem;
+      opacity: 0.9;
+    }
+
+    .treatments-grid {
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .treatment-card {
+      background: var(--background-light);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .treatment-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-accent);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .treatment-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .treatment-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .treatment-content {
+      padding: 2rem;
+    }
+
+    .treatment-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .treatment-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-main);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    .treatment-name {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .treatment-description {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .treatment-benefits {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .benefit-tag {
+      background: var(--gradient-accent);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .schedule-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      background: var(--gradient-main);
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .schedule-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--text-dark);
+      color: white;
+      padding: 3rem 2rem 1rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-links a {
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-main);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    /* Back to Top */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-main);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      box-shadow: var(--shadow-soft);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    /* Modal */
+    .modal-toggle {
+      display: none;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .modal-toggle:checked + .modal {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+      transform: scale(0.8);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-toggle:checked + .modal .modal-content {
+      transform: scale(1);
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-light);
+      transition: color 0.3s ease;
+    }
+
+    .close-modal:hover {
+      color: var(--text-dark);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border-top: 1px solid rgba(0, 119, 166, 0.1);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .mobile-menu ul {
+      list-style: none;
+      padding: 1rem 0;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      border-bottom: 1px solid rgba(0, 119, 166, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu a:hover {
+      background: var(--background-light);
+      color: var(--primary-color);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .mobile-menu-toggle {
+        display: block;
+      }
+
+      .mobile-menu.active {
+        display: block;
+      }
+
+      .treatments-hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .treatments-hero p {
+        font-size: 1.1rem;
+      }
+
+      .treatments-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+
+      .category-title {
+        font-size: 1.5rem;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .treatment-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .header-content {
+        padding: 1rem;
+        position: relative;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .treatments-hero h1 {
+        font-size: 2rem;
+      }
+
+      .treatment-content {
+        padding: 1.5rem;
+      }
+
+      .category-header {
+        padding: 1.5rem;
+      }
+
+      .treatments-hero {
+        padding: 6rem 1rem 3rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  
-<header class="header">
-  <img src="logo.png" alt="Logo" class="logo">
-  <nav class="nav-menu">
-    <a href="index.html">Inicio</a>
-    <a href="hoja de tratamiento.html">Tratamientos</a>
-    <a href="hoja de contacto.html">Contacto</a>
-  </nav>
-</header>
-
-  <main>
-    <!-- Encabezado -->
   <header>
-    
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <i class="fas fa-heartbeat"></i>
+        Dra. Jenny Sarmiento
+      </a>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="#tratamientos">Tratamientos</a></li>
+          <li><a href="hoja de contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+      <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Abrir menú">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="mobile-menu" id="mobileMenu">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="#tratamientos">Tratamientos</a></li>
+          <li><a href="hoja de contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
   </header>
 
-  <!-- Cabecera de tratamientos -->
-  <section class="treatment-header" id="tratamiento">
-    <h1>Nuestros Tratamientos</h1>
-    <p>Ofrecemos una amplia gama de tratamientos estéticos y médicos personalizados para realzar su belleza natural y mejorar su bienestar. Cada procedimiento es realizado con los más altos estándares de calidad y seguridad.</p>
-  </section>
-
-  <!-- Categorías de tratamientos -->
-  <section class="treatment-categories">
-    <!-- Armonización facial -->
-    <div class="category">
-      <div class="category-header">
-        
-        <h2 class="category-title">Armonización Facial</h2>
+  <main>
+    <section class="treatments-hero" id="tratamientos">
+      <div class="treatments-hero-content">
+        <h1>Nuestros Tratamientos</h1>
+        <p>Ofrecemos una amplia gama de tratamientos estéticos y médicos personalizados para realzar su belleza natural y mejorar su bienestar. Cada procedimiento es realizado con los más altos estándares de calidad y seguridad.</p>
       </div>
-      <div class="treatments-list">
-        <div class="treatment-item">
-          <div class="treatment-info">
-            <div class="treatment-name">Toxina Botulínica</div>
-            <div class="treatment-description">Tratamiento para suavizar líneas de expresión y arrugas en rostro y cuello.</div>
-            <div class="treatment-benefits">
-              <span>Resultados inmediatos</span>
-              <span>Sin tiempo de recuperación</span>
-              <span>Efecto natural</span>
-            </div>
-            <a href="Hoja de contacto.html" class="schedule-btn">Agendar cita</a>
-          </div>
-          <div class="treatment-image">
-            <img src="/api/placeholder/150/100" alt="Toxina Botulínica" />
-          </div>
-        </div>
+    </section>
+
+    <section class="category-section">
+      <div class="category-container">
         
-        <div class="treatment-item">
-          <div class="treatment-info">
-            <div class="treatment-name">Ácido Hialurónico</div>
-            <div class="treatment-description">Relleno dérmico para restaurar volumen, definir contornos y revitalizar la piel.</div>
-            <div class="treatment-benefits">
-              <span>Hidratación profunda</span>
-              <span>Efecto lifting</span>
-              <span>Resultados duraderos</span>
-            </div>
-            <a href="Hoja de contacto.html" class="schedule-btn">Agendar cita</a>
+        <!-- Armonización Facial -->
+        <div class="category">
+          <div class="category-header">
+            <h2 class="category-title">
+              
+              Armonización Facial
+            </h2>
           </div>
-          <div class="treatment-image">
-            <img src="/api/placeholder/150/100" alt="Ácido Hialurónico" />
+          <div class="treatments-grid">
+            <div class="treatment-card">
+              <div class="treatment-content">
+                <div class="treatment-header">
+                  <div class="treatment-icon">
+                    <i class="fas fa-syringe"></i>
+                  </div>
+                  <div class="treatment-name">Toxina Botulínica</div>
+                </div>
+                <div class="treatment-description">
+                  Tratamiento para suavizar líneas de expresión y arrugas en rostro y cuello.
+                </div>
+                <div class="treatment-benefits">
+                  <span class="benefit-tag">Resultados inmediatos</span>
+                  <span class="benefit-tag">Sin tiempo de recuperación</span>
+                  <span class="benefit-tag">Efecto natural</span>
+                </div>
+                <a href="hoja de contacto.html" class="schedule-btn">
+                  <i class="fas fa-calendar-alt"></i>
+                  Agendar cita
+                </a>
+              </div>
+            </div>
+
+            <div class="treatment-card">
+              <div class="treatment-content">
+                <div class="treatment-header">
+                  <div class="treatment-icon">
+                    <i class="fas fa-tint"></i>
+                  </div>
+                  <div class="treatment-name">Ácido Hialurónico</div>
+                </div>
+                <div class="treatment-description">
+                  Relleno dérmico para restaurar volumen, definir contornos y revitalizar la piel.
+                </div>
+                <div class="treatment-benefits">
+                  <span class="benefit-tag">Hidratación profunda</span>
+                  <span class="benefit-tag">Efecto lifting</span>
+                  <span class="benefit-tag">Resultados duraderos</span>
+                </div>
+                <a href="hoja de contacto.html" class="schedule-btn">
+                  <i class="fas fa-calendar-alt"></i>
+                  Agendar cita
+                </a>
+              </div>
+            </div>
+
+            <div class="treatment-card">
+              <div class="treatment-content">
+                <div class="treatment-header">
+                  <div class="treatment-icon">
+                    <i class="fas fa-dna"></i>
+                  </div>
+                  <div class="treatment-name">Plasma Rico en Plaquetas</div>
+                </div>
+                <div class="treatment-description">
+                  Tratamiento regenerador que utiliza el plasma de su propia sangre para estimular la producción de colágeno.
+                </div>
+                <div class="treatment-benefits">
+                  <span class="benefit-tag">Rejuvenecimiento natural</span>
+                  <span class="benefit-tag">Mejora la textura</span>
+                  <span class="benefit-tag">Reduce cicatrices</span>
+                </div>
+                <a href="hoja de contacto.html" class="schedule-btn">
+                  <i class="fas fa-calendar-alt"></i>
+                  Agendar cita
+                </a>
+              </div>
+            </div>
+
+            <div class="treatment-card">
+              <div class="treatment-content">
+                <div class="treatment-header">
+                  <div class="treatment-icon">
+                    <i class="fas fa-spa"></i>
+                  </div>
+                  <div class="treatment-name">Hidratación Facial Inyectable</div>
+                </div>
+                <div class="treatment-description">
+                  Técnica que aporta hidratación profunda y revitaliza la piel desde el interior.
+                </div>
+                <div class="treatment-benefits">
+                  <span class="benefit-tag">Luminosidad inmediata</span>
+                  <span class="benefit-tag">Efecto refrescante</span>
+                  <span class="benefit-tag">Estimula colágeno</span>
+                </div>
+                <a href="hoja de contacto.html" class="schedule-btn">
+                  <i class="fas fa-calendar-alt"></i>
+                  Agendar cita
+                </a>
+              </div>
+            </div>
+
+            <div class="treatment-card">
+              <div class="treatment-content">
+                <div class="treatment-header">
+                  <div class="treatment-icon">
+                    <i class="fas fa-leaf"></i>
+                  </div>
+                  <div class="treatment-name">Skin Care</div>
+                </div>
+                <div class="treatment-description">
+                  Rutinas personalizadas y tratamientos para el cuidado diario de su piel.
+                </div>
+                <div class="treatment-benefits">
+                  <span class="benefit-tag">Mantenimiento diario</span>
+                  <span class="benefit-tag">Productos especializados</span>
+                  <span class="benefit-tag">Asesoría profesional</span>
+                </div>
+                <a href="hoja de contacto.html" class="schedule-btn">
+                  <i class="fas fa-calendar-alt"></i>
+                  Agendar cita
+                </a>
+              </div>
+            </div>
           </div>
         </div>
+
+        <!-- Microblading y Micropigmentación -->
+        <div class="category">
+          <div class="category-header">
+            <h2 class="category-title">
+              
+              Microblading y Micropigmentación
+            </h2>
+          </div>
+          <div class="treatments-grid">
+            <div class="treatment-card">
+              <div class="treatment-content">
+                <div class="treatment-header">
+                  <div class="treatment-icon">
+                    <i class="fas fa-bandage"></i>
+                  </div>
+                  <div class="treatment-name">Camuflaje de Cicatrices</div>
+                </div>
+                <div class="treatment-description">
+                  Técnica avanzada para disimular cicatrices mediante pigmentación que iguala el tono de piel.
+                </div>
+                <div class="treatment-benefits">
+                  <span class="benefit-tag">Resultados naturales</span>
+                  <span class="benefit-tag">Recuperación rápida</span>
+                  <span class="benefit-tag">Mejora la autoestima</span>
+                </div>
+                <a href="hoja de contacto.html" class="schedule-btn">
+                  <i class="fas fa-calendar-alt"></i>
+                  Agendar cita
+                </a>
+              </div>
+            </div>
+
+            <div class="treatment-card">
+              <div class="treatment-content">
+                <div class="treatment-header">
+                  <div class="treatment-icon">
+                    <i class="fas fa-circle"></i>
+                  </div>
+                  <div class="treatment-name">Areolas Realistas</div>
+                </div>
+                <div class="treatment-description">
+                  Reconstrucción de areolas mediante micropigmentación para pacientes post-mastectomía o con asimetrías.
+                </div>
+                <div class="treatment-benefits">
+                  <span class="benefit-tag">Efecto 3D</span>
+                  <span class="benefit-tag">Personalización</span>
+                  <span class="benefit-tag">Apoyo post-cirugía</span>
+                </div>
+                <a href="hoja de contacto.html" class="schedule-btn">
+                  <i class="fas fa-calendar-alt"></i>
+                  Agendar cita
+                </a>
+              </div>
+            </div>
+
+            <div class="treatment-card">
+              <div class="treatment-content">
+                <div class="treatment-header">
+                  <div class="treatment-icon">
+                    <i class="fas fa-paint-brush"></i>
+                  </div>
+                  <div class="treatment-name">Cejas y Labios</div>
+                </div>
+                <div class="treatment-description">
+                  Diseño y pigmentación personalizada para realzar la expresión facial y definir contornos.
+                </div>
+                <div class="treatment-benefits">
+                  <span class="benefit-tag">Diseño personalizado</span>
+                  <span class="benefit-tag">Técnica pelo a pelo</span>
+                  <span class="benefit-tag">Corrección de asimetrías</span>
+                </div>
+                <a href="hoja de contacto.html" class="schedule-btn">
+                  <i class="fas fa-calendar-alt"></i>
+                  Agendar cita
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Manejo de Alopecia -->
+        <div class="category">
+          <div class="category-header">
+            <h2 class="category-title">
+              
+              Manejo de Alopecia
+            </h2>
+          </div>
+          <div class="treatments-grid">
+            <div class="treatment-card">
+              <div class="treatment-content">
+                <div class="treatment-header">
+                  <div class="treatment-icon">
+                    <i class="fas fa-prescription-bottle"></i>
+                  </div>
+                  <div class="treatment-name">Mesoterapia Capilar</div>
+                </div>
+                <div class="treatment-description">
+                  Técnica que consiste en microinyecciones de activos para estimular el folículo piloso y detener la caída.
+                </div>
+                <div class="treatment-benefits">
+                  <span class="benefit-tag">Nutrición folicular</span>
+                  <span class="benefit-tag">Fortalecimiento capilar</span>
+                  <span class="benefit-tag">Tratamiento personalizado</span>
+                </div>
+                <a href="hoja de contacto.html" class="schedule-btn">
+                  <i class="fas fa-calendar-alt"></i>
+                  Agendar cita
+                </a>
+              </div>
+            </div>
+
+            <div class="treatment-card">
+              <div class="treatment-content">
+                <div class="treatment-header">
+                  <div class="treatment-icon">
+                    <i class="fas fa-dna"></i>
+                  </div>
+                  <div class="treatment-name">Plasma Rico en Plaquetas</div>
+                </div>
+                <div class="treatment-description">
+                  Aplicación de plasma para estimular el crecimiento y fortalecer el cabello existente.
+                </div>
+                <div class="treatment-benefits">
+                  <span class="benefit-tag">Regeneración natural</span>
+                  <span class="benefit-tag">Previene caída</span>
+                  <span class="benefit-tag">Mejora densidad</span>
+                </div>
+                <a href="hoja de contacto.html" class="schedule-btn">
+                  <i class="fas fa-calendar-alt"></i>
+                  Agendar cita
+                </a>
+              </div>
+            </div>
+
+            <div class="treatment-card">
+              <div class="treatment-content">
+                <div class="treatment-header">
+                  <div class="treatment-icon">
+                    <i class="fas fa-pills"></i>
+                  </div>
+                  <div class="treatment-name">Tratamiento Farmacológico</div>
+                </div>
+                <div class="treatment-description">
+                  Soluciones medicamentosas personalizadas para abordar diferentes tipos de alopecia desde su origen.
+                </div>
+                <div class="treatment-benefits">
+                  <span class="benefit-tag">Evaluación médica</span>
+                  <span class="benefit-tag">Seguimiento continuo</span>
+                  <span class="benefit-tag">Resultados progresivos</span>
+                </div>
+                <a href="hoja de contacto.html" class="schedule-btn">
+                  <i class="fas fa-calendar-alt"></i>
+                  Agendar cita
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="#" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="#" aria-label="TikTok">
+          <i class="fab fa-tiktok"></i>
+        </a>
+      </div>
+      <p>&copy; 2025 Dra. Jenny Sarmiento - Todos los derechos reservados</p>
+      <label for="terms-toggle" style="color: #00a8d6; cursor: pointer; text-decoration: underline; margin-top: 1rem; display: inline-block;">
+        Términos y condiciones
+      </label>
+    </div>
+  </footer>
+
+  <input type="checkbox" id="terms-toggle" class="modal-toggle">
+  <div class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="document.getElementById('terms-toggle').checked = false;">&times;</span>
+      <h2 style="color: var(--primary-color); margin-bottom: 1rem;">Términos y Condiciones</h2>
+      <div style="max-height: 300px; overflow-y: auto; color: var(--text-light); line-height: 1.6;">
+        <h4 style="color: var(--text-dark); margin: 1rem 0 0.5rem;">1. Servicios Médicos</h4>
+        <p>Los servicios ofrecidos por la Dra. Jenny Sarmiento son de carácter médico estético y requieren evaluación previa.</p>
         
-        <div class="treatment-item">
-          <div class="treatment-info">
-            <div class="treatment-name">Plasma Rico en Plaquetas</div>
-            <div class="treatment-description">Tratamiento regenerador que utiliza el plasma de su propia sangre para estimular la producción de colágeno.</div>
-            <div class="treatment-benefits">
-              <span>Rejuvenecimiento natural</span>
-              <span>Mejora la textura</span>
-              <span>Reduce cicatrices</span>
-            </div>
-            <a href="Hoja de contacto.html" class="schedule-btn">Agendar cita</a>
-          </div>
-          <div class="treatment-image">
-            <img src="/api/placeholder/150/100" alt="Plasma Rico en Plaquetas" />
-          </div>
-        </div>
+        <h4 style="color: var(--text-dark); margin: 1rem 0 0.5rem;">2. Consulta Previa</h4>
+        <p>Todo tratamiento requiere una consulta previa para evaluar la idoneidad del paciente y explicar procedimientos, riesgos y beneficios.</p>
         
-        <div class="treatment-item">
-          <div class="treatment-info">
-            <div class="treatment-name">Hidratación Facial Inyectable</div>
-            <div class="treatment-description">Técnica que aporta hidratación profunda y revitaliza la piel desde el interior.</div>
-            <div class="treatment-benefits">
-              <span>Luminosidad inmediata</span>
-              <span>Efecto refrescante</span>
-              <span>Estimula colágeno</span>
-            </div>
-            <a href="Hoja de contacto.html" class="schedule-btn">Agendar cita</a>
-          </div>
-          <div class="treatment-image">
-            <img src="/api/placeholder/150/100" alt="Hidratación Facial" />
-          </div>
-        </div>
+        <h4 style="color: var(--text-dark); margin: 1rem 0 0.5rem;">3. Consentimiento Informado</h4>
+        <p>El paciente debe firmar un consentimiento informado antes de cualquier procedimiento, confirmando que comprende los riesgos y beneficios.</p>
         
-        <div class="treatment-item">
-          <div class="treatment-info">
-            <div class="treatment-name">Skin Care</div>
-            <div class="treatment-description">Rutinas personalizadas y tratamientos para el cuidado diario de su piel.</div>
-            <div class="treatment-benefits">
-              <span>Mantenimiento diario</span>
-              <span>Productos especializados</span>
-              <span>Asesoría profesional</span>
-            </div>
-            <a href="Hoja de contacto.html" class="schedule-btn">Agendar cita</a>
-          </div>
-          <div class="treatment-image">
-            <img src="/api/placeholder/150/100" alt="Skin Care" />
-          </div>
-        </div>
+        <h4 style="color: var(--text-dark); margin: 1rem 0 0.5rem;">4. Resultados</h4>
+        <p>Los resultados pueden variar según cada paciente. No se garantizan resultados específicos y la satisfacción del paciente puede diferir.</p>
+        
+        <h4 style="color: var(--text-dark); margin: 1rem 0 0.5rem;">5. Cuidados Post-Tratamiento</h4>
+        <p>El paciente debe seguir estrictamente las indicaciones post-tratamiento para optimizar resultados y prevenir complicaciones.</p>
+        
+        <h4 style="color: var(--text-dark); margin: 1rem 0 0.5rem;">6. Política de Cancelación</h4>
+        <p>Las cancelaciones deben realizarse con 24 horas de anticipación. Cancelaciones tardías pueden incurrir en cargos.</p>
+        
+        <h4 style="color: var(--text-dark); margin: 1rem 0 0.5rem;">7. Privacidad y Confidencialidad</h4>
+        <p>Toda información médica y personal del paciente se maneja con estricta confidencialidad según las normas médicas vigentes.</p>
+        
+        <h4 style="color: var(--text-dark); margin: 1rem 0 0.5rem;">8. Responsabilidad</h4>
+        <p>La Dra. Jenny Sarmiento se compromete a brindar atención médica de calidad dentro de los estándares profesionales establecidos.</p>
       </div>
     </div>
-    
-    <!-- Microblanding y Micropigmentación -->
-    <div class="category">
-      <div class="category-header">
-        
-        <h2 class="category-title">Microblanding y Micropigmentación</h2>
-      </div>
-      <div class="treatments-list">
-        <div class="treatment-item">
-          <div class="treatment-info">
-            <div class="treatment-name">Camuflaje de Cicatrices</div>
-            <div class="treatment-description">Técnica avanzada para disimular cicatrices mediante pigmentación que iguala el tono de piel.</div>
-            <div class="treatment-benefits">
-              <span>Resultados naturales</span>
-              <span>Recuperación rápida</span>
-              <span>Mejora la autoestima</span>
-            </div>
-            <a href="Hoja de contacto.html" class="schedule-btn">Agendar cita</a>
-          </div>
-          <div class="treatment-image">
-            <img src="/api/placeholder/150/100" alt="Camuflaje de Cicatrices" />
-          </div>
-        </div>
-        
-        <div class="treatment-item">
-          <div class="treatment-info">
-            <div class="treatment-name">Areolas Realistas</div>
-            <div class="treatment-description">Reconstrucción de areolas mediante micropigmentación para pacientes post-mastectomía o con asimetrías.</div>
-            <div class="treatment-benefits">
-              <span>Efecto 3D</span>
-              <span>Personalización</span>
-              <span>Apoyo post-cirugía</span>
-            </div>
-            <a href="Hoja de contacto.html" class="schedule-btn">Agendar cita</a>
-          </div>
-          <div class="treatment-image">
-            <img src="/api/placeholder/150/100" alt="Areolas Realistas" />
-          </div>
-        </div>
-        
-        <div class="treatment-item">
-          <div class="treatment-info">
-            <div class="treatment-name">Cejas y Labios</div>
-            <div class="treatment-description">Diseño y pigmentación personalizada para realzar la expresión facial y definir contornos.</div>
-            <div class="treatment-benefits">
-              <span>Diseño personalizado</span>
-              <span>Técnica pelo a pelo</span>
-              <span>Corrección de asimetrías</span>
-            </div>
-            <a href="Hoja de contacto.html" class="schedule-btn">Agendar cita</a>
-          </div>
-          <div class="treatment-image">
-            <img src="/api/placeholder/150/100" alt="Cejas y Labios" />
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Manejo de Alopecia -->
-    <div class="category">
-      <div class="category-header">
-        
-        <h2 class="category-title">Manejo de Alopecia</h2>
-      </div>
-      <div class="treatments-list">
-        <div class="treatment-item">
-          <div class="treatment-info">
-            <div class="treatment-name">Mesoterapia Capilar</div>
-            <div class="treatment-description">Técnica que consiste en microinyecciones de activos para estimular el folículo piloso y detener la caída.</div>
-            <div class="treatment-benefits">
-              <span>Nutrición folicular</span>
-              <span>Fortalecimiento capilar</span>
-              <span>Tratamiento personalizado</span>
-            </div>
-            <a href="Hoja de contacto.html" class="schedule-btn">Agendar cita</a>
-          </div>
-          <div class="treatment-image">
-            <img src="/api/placeholder/150/100" alt="Mesoterapia Capilar" />
-          </div>
-        </div>
-        
-        <div class="treatment-item">
-          <div class="treatment-info">
-            <div class="treatment-name">Plasma Rico en Plaquetas</div>
-            <div class="treatment-description">Aplicación de plasma para estimular el crecimiento y fortalecer el cabello existente.</div>
-            <div class="treatment-benefits">
-              <span>Regeneración natural</span>
-              <span>Previene caída</span>
-              <span>Mejora densidad</span>
-            </div>
-            <a href="Hoja de contacto.html" class="schedule-btn">Agendar cita</a>
-          </div>
-          <div class="treatment-image">
-            <img src="/api/placeholder/150/100" alt="PRP Capilar" />
-          </div>
-        </div>
-        
-        <div class="treatment-item">
-          <div class="treatment-info">
-            <div class="treatment-name">Tratamiento Farmacológico</div>
-            <div class="treatment-description">Soluciones medicamentosas personalizadas para abordar diferentes tipos de alopecia desde su origen.</div>
-            <div class="treatment-benefits">
-              <span>Evaluación médica</span>
-              <span>Seguimiento continuo</span>
-              <span>Resultados progresivos</span>
-            </div>
-            <a href="Hoja de contacto.html" class="schedule-btn">Agendar cita</a>
-          </div>
-          <div class="treatment-image">
-            <img src="/api/placeholder/150/100" alt="Tratamiento Farmacológico" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
 
-  <!-- Curvas decorativas -->
-  <section class="curvas">
-    <div></div>
-    <div></div>
-    <div></div>
-  </section>
-
-  <!-- Semicírculo decorativo -->
-  <div class="semicirculo"></div>
-
-
-  
-
-  <!-- Checkbox para controlar el modal sin JS -->
-  <input type="checkbox" id="terms-toggle">
-
- 
-
-  <!-- Botón volver arriba -->
-  <a href="#tratamiento" class="back-to-top">
+  <a href="#" class="back-to-top" id="backToTop" aria-label="Volver arriba">
     <i class="fas fa-chevron-up"></i>
   </a>
-  </main>
-  
-<footer>
-  <p>&copy; 2025 Dra. Jenny Sarmiento. Todos los derechos reservados.</p>
-  <div class="socials">
-    <a href="#">🌐</a>
-    <a href="#">📷</a>
-    <a href="#">📘</a>
-  </div>
-</footer>
 
-  <button id="btnSubir" class="back-to-top">↑</button>
+  <script>
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const mobileMenu = document.getElementById('mobileMenu');
+      const toggleBtn = document.querySelector('.mobile-menu-toggle i');
+      
+      mobileMenu.classList.toggle('active');
+      
+      if (mobileMenu.classList.contains('active')) {
+        toggleBtn.classList.remove('fa-bars');
+        toggleBtn.classList.add('fa-times');
+      } else {
+        toggleBtn.classList.remove('fa-times');
+        toggleBtn.classList.add('fa-bars');
+      }
+    }
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        const mobileMenu = document.getElementById('mobileMenu');
+        const toggleBtn = document.querySelector('.mobile-menu-toggle i');
+        
+        mobileMenu.classList.remove('active');
+        toggleBtn.classList.remove('fa-times');
+        toggleBtn.classList.add('fa-bars');
+      });
+    });
+
+    // Back to top button functionality
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId !== '#') {
+          const targetSection = document.querySelector(targetId);
+          if (targetSection) {
+            targetSection.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }
+      });
+    });
+
+    // Header scroll effect
+    let lastScroll = 0;
+    const header = document.querySelector('header');
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      
+      if (currentScroll > 100) {
+        header.style.background = 'rgba(255, 255, 255, 0.98)';
+        header.style.backdropFilter = 'blur(15px)';
+      } else {
+        header.style.background = 'rgba(255, 255, 255, 0.95)';
+        header.style.backdropFilter = 'blur(10px)';
+      }
+      
+      lastScroll = currentScroll;
+    });
+
+    // Animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe treatment cards for animation
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.treatment-card, .category');
+      cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+      });
+    });
+
+    // Close modal when clicking outside
+    document.addEventListener('click', (e) => {
+      const modal = document.querySelector('.modal');
+      const modalContent = document.querySelector('.modal-content');
+      const termsToggle = document.getElementById('terms-toggle');
+      
+      if (modal && modal.contains(e.target) && !modalContent.contains(e.target)) {
+        termsToggle.checked = false;
+      }
+    });
+
+    // Prevent body scroll when modal is open
+    const termsToggle = document.getElementById('terms-toggle');
+    termsToggle.addEventListener('change', () => {
+      if (termsToggle.checked) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Add loading animation to schedule buttons
+    document.querySelectorAll('.schedule-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const icon = this.querySelector('i');
+        const originalClass = icon.className;
+        
+        icon.className = 'fas fa-spinner fa-spin';
+        
+        setTimeout(() => {
+          icon.className = originalClass;
+        }, 1000);
+      });
+    });
+
+    // Add hover effect sound (optional)
+    const hoverElements = document.querySelectorAll('.treatment-card, .schedule-btn, .social-links a');
+    
+    hoverElements.forEach(element => {
+      element.addEventListener('mouseenter', () => {
+        element.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+      });
+    });
+
+    // Lazy loading for better performance
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.classList.remove('lazy');
+            imageObserver.unobserve(img);
+          }
+        });
+      });
+
+      document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+      });
+    }
+  </script>
 </body>
 </html>
